@@ -38,12 +38,12 @@ def create_app():
                     retry = Retry(connect=3, backoff_factor=0.5)
                     adapter = HTTPAdapter(max_retries=retry)
                     session.mount('http://', adapter)
-                    response = session.post('http://localhost:5000/api/movies', json=movie_data)
-                    sleep(1) # Try avoid connection errors. If machine is refusing, try changing the running PORT.
+                    response = session.post('http://localhost:5000/api/movies', json=movie_data,verify=False) # Avoid connection errors
                     response.raise_for_status()
                     print(f"Movie {movie_data['title']} posted successfully.")
                 except requests.exceptions.RequestException as e:
                     print(f"Failed to post movie {movie_data['title']}: {e}")
+                    sleep(1) # Try avoid connection errors. If machine is refusing, try changing the running PORT.
 
     except FileNotFoundError:
         print("CSV file not found.")
