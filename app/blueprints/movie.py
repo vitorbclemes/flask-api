@@ -12,7 +12,7 @@ def index():
 
 @bp_movie.route('/api/movies', methods=['GET'])
 def get_winner_info():
-
+    #Query winner movies
     winner_movies = MovieModel.query.filter_by(winner='yes').order_by(MovieModel.producers, MovieModel.year).all()
 
     # Group movies by producers
@@ -54,10 +54,13 @@ def get_winner_info():
         'data': result
     }
 
+    return jsonify(response_data), 200
 
 
 
-@bp_movie.route('/api/movies',methods=['POST'])
+
+
+@bp_movie.route('/api/movies/',methods=['POST'])
 def store():
     data = request.get_json()
 
