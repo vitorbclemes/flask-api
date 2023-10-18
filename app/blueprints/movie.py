@@ -10,7 +10,7 @@ def index():
     movie_list = [movie.to_dict() for movie in movies]
     return jsonify(movie_list)
 
-@bp_movie.route('/api/movies', methods=['GET'])
+@bp_movie.route('/api/movies/projection', methods=['GET'])
 def get_winner_info():
     #Query winner movies
     winner_movies = MovieModel.query.filter_by(winner='yes').order_by(MovieModel.producers, MovieModel.year).all()
