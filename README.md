@@ -100,9 +100,10 @@ It should install everything you need.
 
 Now, to execute it, just run:  
 ```flask run```  
+To run in Debug mode, try instead:  
+```flask run --debug```
 
 It will automatically post the csv documents from the movielist.csv file inside the context.  
-
-NOTE: If you want to change the movielist.csv file, just replace it and rename it equally to the original.  
+**NOTE:** If you want to change the movielist.csv file, just replace it and rename it equally to the original.  
 
 Now, you are free to explore any request by any prefered tool, like Postman,Insomnia, etc.
