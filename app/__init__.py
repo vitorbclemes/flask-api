@@ -19,6 +19,7 @@ def create_app():
     import requests
     from requests.adapters import HTTPAdapter
     from urllib3.util.retry import Retry
+    from time import sleep
 
     try:
         with open('movielist.csv', 'r', encoding='utf-8') as file:
@@ -38,6 +39,7 @@ def create_app():
                     adapter = HTTPAdapter(max_retries=retry)
                     session.mount('http://', adapter)
                     response = session.post('http://localhost:5000/api/movies', json=movie_data)
+                    sleep(1) # Try avoid connection errors. If machine is refusing, try changing the running PORT.
                     response.raise_for_status()
                     print(f"Movie {movie_data['title']} posted successfully.")
                 except requests.exceptions.RequestException as e:
@@ -54,3 +56,5 @@ if __name__ == '__main__':
     app = create_app()
     with app.app_context():
         db.create_all()
+    # Uncomment if having problems with the machine refusing the connection. It MAY help it.
+    # app.run(PORT == your-port)
