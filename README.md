@@ -36,7 +36,7 @@ As it is implemented in Python, a simple ```to_dict()``` function was implemente
 ## Routes
 The MovieModel presents presents routes that cover 3 common HTTP requests(GET,POST,DELETE). (*PUT requests were not necessary)  
 
-As it recommended to run in debug mode, it will use the user's localhost server and default port 5000, so routes will always have ```http://localhost:5000```` as base url.  
+As it recommended to run in debug mode, it will use the user's localhost server and default port 5000, so routes will always have ```http://localhost:5000``` as base url.  
 
 
 ### GET ALL MOVIES
@@ -97,9 +97,12 @@ Create you environment with you prefered tool, that run:
 ```pip install requirements.txt```  
 
 It should install everything you need.  
+
 Now, to execute it, just run:  
 ```flask run```  
+
 It will automatically post the csv documents from the movielist.csv file inside the context.  
+
 NOTE: If you want to change the movielist.csv file, just replace it and rename it equally to the original.  
 
 Now, you are free to explore any request by any prefered tool, like Postman,Insomnia, etc.
